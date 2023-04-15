@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import "/public/assets/css/pages/page-auth.css";
