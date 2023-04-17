@@ -34,7 +34,7 @@
                     id="password"
                     name="password"
                     type="password"
-                    class="mt-1 block w-3/4"
+                    class="form-control"
                     placeholder="{{ __('Password') }}"
                 />
 
