@@ -13,6 +13,12 @@
       "slug": "calendar"
     },
     {
+      "url": "/users",
+      "name": "Usuarios",
+      "icon": "menu-icon tf-icons bx bx-user",
+      "slug": "users"
+    },
+    {
       "name": "Layouts",
       "icon": "menu-icon tf-icons bx bx-layout",
       "slug": "layouts",

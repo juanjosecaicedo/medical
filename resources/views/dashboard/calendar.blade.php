@@ -24,77 +24,73 @@
 
 
 @section('content')
-  <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="card">
-      <div class="card-body">
-        <article class="content">
-          <aside class="sidebar">
-            <div class="sidebar-item">
-              <input class="checkbox-all" type="checkbox" id="all" value="all" checked="">
-              <label class="checkbox checkbox-all" for="all" style="--checkbox-all:#fff;">View all</label>
+  <div class="shadow-sm p-3 mb-5 bg-white rounded">
+    <article class="content">
+      <aside class="sidebar">
+        <div class="sidebar-item">
+          <input class="checkbox-all" type="checkbox" id="all" value="all" checked="">
+          <label class="checkbox checkbox-all" for="all" style="--checkbox-all:#fff;">View all</label>
+        </div>
+        <hr>
+        <div class="sidebar-item">
+          <input type="checkbox" id="1" value="1" checked="">
+          <label class="checkbox checkbox-calendar checkbox-1" for="1" style="--checkbox-1:#fff;">My
+            Calendar</label>
+        </div>
+        <div class="sidebar-item">
+          <input type="checkbox" id="2" value="2" checked="">
+          <label class="checkbox checkbox-calendar checkbox-2" for="2" style="--checkbox-2:#fff;">Work</label>
+        </div>
+        <div class="sidebar-item">
+          <input type="checkbox" id="3" value="3" checked="">
+          <label class="checkbox checkbox-calendar checkbox-3" for="3" style="--checkbox-3:#fff;">Family</label>
+        </div>
+        <div class="sidebar-item">
+          <input type="checkbox" id="4" value="4" checked="">
+          <label class="checkbox checkbox-calendar checkbox-4" for="4" style="--checkbox-4:#fff;">Friends</label>
+        </div>
+        <div class="sidebar-item">
+          <input type="checkbox" id="5" value="5" checked="">
+          <label class="checkbox checkbox-calendar checkbox-5" for="5" style="--checkbox-5:#fff;">Travel</label>
+        </div>
+        <hr>
+        <div class="app-footer">© NHN Cloud Corp.</div>
+      </aside>
+      <section class="app-column">
+        <nav class="navbar">
+          <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="btn btn-outline-primary" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span class="button-text">Weekly</span>
+                <span class="dropdown-icon toastui-calendar-icon toastui-calendar-ic-dropdown-arrow"></span>
+              </button>
             </div>
-            <hr>
-            <div class="sidebar-item">
-              <input type="checkbox" id="1" value="1" checked="">
-              <label class="checkbox checkbox-calendar checkbox-1" for="1" style="--checkbox-1:#fff;">My
-                Calendar</label>
-            </div>
-            <div class="sidebar-item">
-              <input type="checkbox" id="2" value="2" checked="">
-              <label class="checkbox checkbox-calendar checkbox-2" for="2" style="--checkbox-2:#fff;">Work</label>
-            </div>
-            <div class="sidebar-item">
-              <input type="checkbox" id="3" value="3" checked="">
-              <label class="checkbox checkbox-calendar checkbox-3" for="3" style="--checkbox-3:#fff;">Family</label>
-            </div>
-            <div class="sidebar-item">
-              <input type="checkbox" id="4" value="4" checked="">
-              <label class="checkbox checkbox-calendar checkbox-4" for="4" style="--checkbox-4:#fff;">Friends</label>
-            </div>
-            <div class="sidebar-item">
-              <input type="checkbox" id="5" value="5" checked="">
-              <label class="checkbox checkbox-calendar checkbox-5" for="5" style="--checkbox-5:#fff;">Travel</label>
-            </div>
-            <hr>
-            <div class="app-footer">© NHN Cloud Corp.</div>
-          </aside>
-          <section class="app-column">
-            <nav class="navbar">
-              <div class="dropdown">
-                <div class="dropdown-trigger">
-                  <button class="btn btn-outline-primary" aria-haspopup="true" aria-controls="dropdown-menu">
-                    <span class="button-text">Weekly</span>
-                    <span class="dropdown-icon toastui-calendar-icon toastui-calendar-ic-dropdown-arrow"></span>
-                  </button>
-                </div>
-                <div class="dropdown-menu">
-                  <div class="dropdown-content">
-                    <a href="#" class="dropdown-item" data-view-name="month">Monthly</a>
-                    <a href="#" class="dropdown-item" data-view-name="week">Weekly</a>
-                    <a href="#" class="dropdown-item" data-view-name="day">Daily</a>
-                  </div>
-                </div>
+            <div class="dropdown-menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item" data-view-name="month">Monthly</a>
+                <a href="#" class="dropdown-item" data-view-name="week">Weekly</a>
+                <a href="#" class="dropdown-item" data-view-name="day">Daily</a>
               </div>
-              <button class="btn btn-outline-primary today me-2">Today</button>
+            </div>
+          </div>
+          <button class="btn btn-outline-primary today me-2">Today</button>
 
-              <button class="btn rounded-pill btn-icon btn-outline-primary me-1 prev">
-                <i class='bx bx-chevron-left'></i>
-              </button>
-              <button class="btn rounded-pill btn-icon btn-outline-primary next">
-                <i class='bx bx-chevron-right'></i>
-              </button>
-              <span class="navbar--range">2023-04-16 ~ 2023-04-22</span>
-              <div class="nav-checkbox">
-                <input class="checkbox-collapse" type="checkbox" id="collapse" value="collapse">
-                <label for="collapse" style="--checkbox-collapse:#fff;">Collapse duplicate events and disable the detail
-                  popup</label>
-              </div>
-            </nav>
-            <main id="app" style="height: 60vh"></main>
-          </section>
-        </article>
-      </div>
-    </div>
+          <button class="btn rounded-pill btn-icon btn-outline-primary me-1 prev">
+            <i class='bx bx-chevron-left'></i>
+          </button>
+          <button class="btn rounded-pill btn-icon btn-outline-primary next">
+            <i class='bx bx-chevron-right'></i>
+          </button>
+          <span class="navbar--range">2023-04-16 ~ 2023-04-22</span>
+          <div class="nav-checkbox">
+            <input class="checkbox-collapse" type="checkbox" id="collapse" value="collapse">
+            <label for="collapse" style="--checkbox-collapse:#fff;">Collapse duplicate events and disable the detail
+              popup</label>
+          </div>
+        </nav>
+        <main id="app" style="height: 60vh"></main>
+      </section>
+    </article>
   </div>
 @endsection
 
@@ -175,7 +171,7 @@
               appState.isDropdownActive = !appState.isDropdownActive;
               dropdown.classList.toggle('is-active', appState.isDropdownActive);
               dropdownTriggerIcon.classList.toggle(cls('open'), appState.isDropdownActive);
-              dropdown.querySelector('.dropdown-menu').style.display = appState.isDropdownActive ? 'block': 'none';
+              dropdown.querySelector('.dropdown-menu').style.display = appState.isDropdownActive ? 'block' : 'none';
           }
 
           function setAllCheckboxes(checked) {

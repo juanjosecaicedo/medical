@@ -15,7 +15,7 @@
   />
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title') - Dashboard </title>
+  <title>@yield('title') </title>
 
   <meta name="description" content=""/>
 
@@ -35,10 +35,11 @@
 
   <!-- Include Scripts for customizer, helper, analytics, config -->
   @include('layouts.sections.scriptsIncludes')
-
+  @livewireStyles
 </head>
 
 <body>
+
 
 <!-- Layout Content -->
 @yield('layoutContent')
