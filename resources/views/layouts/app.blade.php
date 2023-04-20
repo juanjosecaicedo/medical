@@ -46,6 +46,6 @@
 <!--/ Layout Content -->
 
 <!-- Include Scripts -->
-@include('layouts/sections/scripts')
+@include('layouts.sections.scripts')
 </body>
 </html>

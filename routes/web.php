@@ -26,13 +26,14 @@ Route::get('/calendar', function () {
     return view('dashboard.calendar');
 })->middleware(['auth'], 'verified')->name('calendar');
 
-Route::resource('users', \App\Http\Controllers\UserController::class)->names('dashboard.users');
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('users', function () {
+        return view('dashboard.users.index');
+    })->name('dashboard.users');
 });
 
 require __DIR__ . '/auth.php';
