@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        (new \Laravolt\Avatar\Avatar)->create($request->name)->save(storage_path('app/public/avatar-' . $user->id . '.png'));
+        //(new \Laravolt\Avatar\Avatar)->create($request->name)->save(storage_path('app/public/avatar-' . $user->id . '.png'));
 
         event(new Registered($user));
 

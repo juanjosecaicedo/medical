@@ -2,17 +2,34 @@
   <div class="card">
     <div class="card-header">
       <h5>Lista de Usuarios</h5>
-      <div class="">
-        <input class="form-control" wire:model="search" placeholder="Buscar por nombre o correo"/>
-        <button class="btn btn-primary" wire:click="register">Agregar usuario</button>
+      <div class="row">
+        <div class="col col-sm-8">
+          <input class="form-control " wire:model="search" placeholder="Buscar por nombre o correo"/>
+        </div>
+        <div class="col col-sm-2">
+          <select class="form-select" wire:model="perPage" aria-label="Default select example">
+            <option selected disabled>{{ __('Numero de paginas') }}</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+
+        <div class="col col-sm-2">
+          <button class="btn btn-primary ms-auto" wire:click="register">Agregar usuario</button>
+        </div>
       </div>
     </div>
 
     @if($users->count())
+      @if(session()->has('message-deleted'))
+        <span class="text-primary px-4">{{ session('message-deleted') }}</span>
+      @endif
       <div class="table-responsive text-nowrap">
         <table class="table">
           <thead>
           <tr>
+            <th></th>
             <th>Id</th>
             <th>Nombre</th>
             <th>Correo</th>
@@ -23,6 +40,9 @@
           <tbody class="table-border-bottom-0">
           @foreach($users as $item)
             <tr wire:key="{{ $item->id  }}">
+              <td>
+                <img src="{{ Avatar::create($item->name)->toBase64() }}" width="30" alt="">
+              </td>
               <td>{{ $item->id }}</td>
               <td><strong>{{ $item->name }}</strong></td>
               <td>{{ $item->email }}</td>
@@ -41,7 +61,8 @@
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:void(0);" wire:click="edit({{$item->id}})"><i
                         class="bx bx-edit-alt me-1"></i> Edit</a>
-                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                    <a class="dropdown-item" href="javascript:void(0);" wire:click="delete({{$item->id}})"><i
+                        class="bx bx-trash me-1"></i> Delete</a>
                   </div>
                 </div>
               </td>
@@ -86,7 +107,6 @@
                 name="name"
                 placeholder="Enter your username"
                 wire:model="name"
-
               />
               @error('name') <span class="error">{{ $message }}</span> @enderror
             </div>
@@ -100,9 +120,9 @@
               <label for="status">{{ __('Estado de usuario') }}</label>
               <select class="form-select @error('status') is-invalid @enderror" aria-label="select" name="status"
                       id="status" wire:model="status">
-                <option @if($status == null) selected @endif >{{ __('---') }}</option>
-                <option value="0" @if($status == 0) selected @endif>{{ __('Inactivo') }}</option>
-                <option value="1" @if($status == 2) selected @endif >{{ __('Activo') }}</option>
+                <option selected disabled>{{ __('---') }}</option>
+                <option value="1">{{ __('Activo') }}</option>
+                <option value="0">{{ __('Inactivo') }}</option>
               </select>
               @error('status') <span class="error">{{ $message }}</span> @enderror
             </div>
@@ -139,7 +159,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
               <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
           </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -20,6 +21,7 @@ class DashboardUserComponent extends Component
     public $password_confirmation;
     public $search;
     public $userId;
+    public $perPage = 25;
 
     /**
      * @var string
@@ -41,7 +43,7 @@ class DashboardUserComponent extends Component
     {
         $users = User::where('name', 'LIKE', '%' . $this->search . '%')
             ->orWhere('email', 'LIKE', '%' . $this->search . '%')
-            ->paginate(3);
+            ->paginate($this->perPage);
 
         return view('livewire.dashboard-user-component', compact('users'));
     }
@@ -86,8 +88,9 @@ class DashboardUserComponent extends Component
             'status' => $this->status,
             'password' => Hash::make($this->password),
         ]);
+        event(new Registered($user));
         $this->resetForm();
-        session()->flash('message', 'User successfully save.');
+        session()->flash('message', 'User successfully created.');
     }
 
     private function update()
@@ -118,5 +121,11 @@ class DashboardUserComponent extends Component
         $this->status = null;
         $this->actionName = 'save';
         $this->reset('name', 'email', 'password', 'password_confirmation');
+    }
+
+    public function delete($id)
+    {
+        User::find($id)->delete();
+        session()->flash('message-deleted', 'User successfully deleted.');
     }
 }
